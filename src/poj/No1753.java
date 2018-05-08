@@ -15,17 +15,27 @@ package poj;
  * 1 means black, 0 means white
  */
 public class No1753 {
-	int[][] ChangeColor(int ArrayFlip[][],int axisX,int axisY) {
+	static int[][] ChangeColor(int ArrayFlip[][],int axisX,int axisY) {
 		int x = ArrayFlip.length;
 		int y = ArrayFlip[0].length;
-		int Xup = axisX-1, Xdown=axisX-1, Xleft=axisY-1,Xright=axisY+1;
+		int Xup = axisX-1, Xdown=axisX+1, Xleft=axisY-1,Xright=axisY+1;
 		if(Xup>=0) {
 			SwapColor(ArrayFlip,Xup,axisY);
 		}
+		if(Xdown<x) {
+			SwapColor(ArrayFlip, Xdown, axisY);
+		}
+		if(Xleft>=0) {
+			SwapColor(ArrayFlip, axisX, Xleft);
+		}
+		if(Xright<y) {
+			SwapColor(ArrayFlip, axisX, Xright);
+		}
+		SwapColor(ArrayFlip, axisX, axisY);
 		return ArrayFlip;
 	}
 	
-	 void SwapColor(int[][] arrayFlip, int axisX, int axisY) {
+	 static void SwapColor(int[][] arrayFlip, int axisX, int axisY) {
 		// TODO Auto-generated method stub
 		if (arrayFlip[axisX][axisY]==0) 
 			arrayFlip[axisX][axisY]=1;
@@ -33,11 +43,16 @@ public class No1753 {
 			arrayFlip[axisX][axisY]=0;				
 	}
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[][] ArrayFlip= {{1,0},{0,1}};
 		ArrayFlip = ChangeColor(ArrayFlip,1,0);
-		System.out.print(ArrayFlip);
+		for(int i=0;i<ArrayFlip.length;i++) {
+			for(int j=0;j<ArrayFlip[0].length;j++)
+				System.out.print(ArrayFlip[i][j]+" ");
+			System.out.print('\n');
+		}
+		
 	}
 
 }
