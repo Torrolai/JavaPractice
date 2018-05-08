@@ -44,8 +44,20 @@ public class No1753 {
 		}
 		return true;		
 	}
+	int PlayGame(int ArrayFlip[][],int count) {
+		count += 1;
+		for(int i=0;i<ArrayFlip.length;i++) {
+			for(int j=0;j<ArrayFlip[0].length;j++) {
+				ArrayFlip=ChangeColor(ArrayFlip, i, j);
+				if(CheckColor(ArrayFlip)) {
+					return count;}
+			}
+		}
+		return count;
+		
+	}
 	
-	 static void SwapColor(int[][] arrayFlip, int axisX, int axisY) {
+	static void SwapColor(int[][] arrayFlip, int axisX, int axisY) {
 		// TODO Auto-generated method stub
 		if (arrayFlip[axisX][axisY]==0) 
 			arrayFlip[axisX][axisY]=1;
