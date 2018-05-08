@@ -35,6 +35,16 @@ public class No1753 {
 		return ArrayFlip;
 	}
 	
+	boolean CheckColor(int ArrayFlip[][]) {
+		for(int i=0;i<ArrayFlip.length;i++){
+			for(int j=0;j<ArrayFlip[0].length;j++) {
+				if(ArrayFlip[0][0]!=ArrayFlip[i][j])
+					return false;
+			}
+		}
+		return true;		
+	}
+	
 	 static void SwapColor(int[][] arrayFlip, int axisX, int axisY) {
 		// TODO Auto-generated method stub
 		if (arrayFlip[axisX][axisY]==0) 
