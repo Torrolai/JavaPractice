@@ -15,7 +15,7 @@ public class No1753a {
 		// TODO Auto-generated method stub
 		int[] a= {1,2,3,4,5};
 		int num=2;
-		int[] result;
+		int[] result; 
 		result = new int[num];
 		func(a,0,result,num,num);
 	}
@@ -23,9 +23,9 @@ public class No1753a {
 	static void func(int[] array1,int start,int[] result,int count,int num) {
 		int arrayLen = array1.length;
 		int i = 0;
-		for(i=start;i<arrayLen+1-count;i++) {
+		for(i=start;i<arrayLen+1-count;i++) { //选完一个后还剩下的个数
 			result[count-1]=i;
-			if(count-1==0) {
+			if(count-1==0) {  //count-1==0表示数完了
 				int j;
 				for(j=num-1;j>=0;j--) {
 					System.out.printf("%d ", array1[result[j]]);
