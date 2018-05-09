@@ -5,7 +5,7 @@ package poj;
 1 //arr为原始数组
 2 //start为遍历起始位置
 3 //result保存结果，为一维数组
-4 //count为result数组的索引值，起辅助作用
+4 //count为result数组的索引值，起辅助作用asdas
 5 //NUM为要选取的元素个数
 6 //arr_len为原始数组的长度，为定值
 */
