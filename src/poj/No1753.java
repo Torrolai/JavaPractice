@@ -15,7 +15,7 @@ import java.lang.reflect.AnnotatedArrayType;
  * 
  * http://www.cnblogs.com/null00/archive/2012/04/27/2474041.html
  */
-/*sadasd
+/*sadasdsd
  * 1 means black, 0 means white
  */
 public class No1753 {
