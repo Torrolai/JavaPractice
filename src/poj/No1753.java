@@ -69,13 +69,13 @@ public class No1753 {
 	static int PlayGame(int[][] ArrayFlip,int startx,int starty,int[] resultx,int[] resulty, int count,int num,int last) {
 		int RowLen = ArrayFlip.length;
 		int ColLen = ArrayFlip[0].length;
+		//1.backup original array
+		int[][] ArrayFlipNew = CopyOfArray(ArrayFlip);
 		for(int i=startx;i<RowLen;i++) {
 			resultx[count-1] = i;
 			for(int j=starty;j<ColLen;j++) {
 				resulty[count-1] = j;
-				if(count-1==0) {
-					//1.backup original array
-					int[][] ArrayFlipNew = CopyOfArray(ArrayFlip);
+				if(count-1==0) {					
 					//2.change the array
 					int[][] ArrayFlipChange = ChangeColor(ArrayFlip, resultx[count-1] , resulty[count-1]);
 					last += 1;
@@ -85,7 +85,8 @@ public class No1753 {
 					}
 					//4.restored if necessary
 					if(last==num) {
-						ArrayFlip=ArrayFlipNew;
+						ArrayFlip=CopyOfArray(ArrayFlipNew);
+						last = 0;
 					}
 					/*make the program complicated
 					if(i==RowLen-1 & j==ColLen-1) {	
@@ -128,8 +129,14 @@ public class No1753 {
 		int count=0;
 		resultx = new int[num];
 		resulty = new int[num];
-		count = PlayGame(ArrayFlip,0,0,resultx,resulty,num,num);
-		System.out.print(count);
+		for(int i=1;i<4;i++) {
+			count = PlayGame(ArrayFlip,0,0,resultx,resulty,i,i,0);
+			if(count>0) {
+				System.out.print(count);
+			}
+		}
+		
+		
 		/*
 		ArrayFlip = ChangeColor(ArrayFlip,1,0);
 		for(int i=0;i<ArrayFlip.length;i++) {
