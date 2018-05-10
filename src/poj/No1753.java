@@ -69,7 +69,7 @@ public class No1753 {
 	static int PlayGame(int[][] ArrayFlip,int startx,int starty,int[] resultx,int[] resulty, int count,int num,int last) {
 		int RowLen = ArrayFlip.length;
 		int ColLen = ArrayFlip[0].length;
-		//1.backup original array
+		//1.backup original array(wrong function)
 		int[][] ArrayFlipNew = CopyOfArray(ArrayFlip);
 		for(int i=startx;i<RowLen;i++) {
 			resultx[count-1] = i;
@@ -78,13 +78,12 @@ public class No1753 {
 				if(count-1==0) {					
 					//2.change the array
 					int[][] ArrayFlipChange = ChangeColor(ArrayFlip, resultx[count-1] , resulty[count-1]);
-					last += 1;
-					//3.check the array								
-					if(CheckColor(ArrayFlipChange)) {
-						return num;
-					}
-					//4.restored if necessary
+					last += 1;					
+					//3.check the array and restored if necessary
 					if(last==num) {
+						if(CheckColor(ArrayFlipChange)) {
+							return num;
+						}						
 						ArrayFlip=CopyOfArray(ArrayFlipNew);
 						last = 0;
 					}
@@ -122,14 +121,13 @@ public class No1753 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[][] ArrayFlip= {{1,0},{0,1}};
 		int[] resultx;
 		int[] resulty;
-		int num=1;
 		int count=0;
-		resultx = new int[num];
-		resulty = new int[num];
 		for(int i=1;i<4;i++) {
+			int[][] ArrayFlip= {{1,0},{0,1}};
+			resultx = new int[i];
+			resulty = new int[i];
 			count = PlayGame(ArrayFlip,0,0,resultx,resulty,i,i,0);
 			if(count>0) {
 				System.out.print(count);
