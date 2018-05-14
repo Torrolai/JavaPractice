@@ -77,8 +77,11 @@ public class No1753 {
 				resulty[count-1] = j;
 				if(count-1==0) {					
 					//2.change the array
-					int[][] ArrayFlipChange = ChangeColor(ArrayFlip, resultx[count-1] , resulty[count-1]);
-					last += 1;					
+					int[][] ArrayFlipChange = null;
+					for(int k=0;k<num;k++) {
+						ArrayFlipChange = ChangeColor(ArrayFlip, resultx[k] , resulty[k]);
+						last += 1;	
+					}									
 					//3.check the array and restored if necessary
 					if(last==num) {
 						if(CheckColor(ArrayFlipChange)) {
